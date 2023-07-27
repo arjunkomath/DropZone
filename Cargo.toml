@@ -2,6 +2,11 @@
 name = "dropzone"
 version = "0.0.1"
 edition = "2021"
+description = "Simple cloud clipboard"
+authors = ["Arjun Komath <arjunkomath@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/arjunkomath/DropZone"
+keywords = ["cloud", "clipboard", "sync", "universal"]
 
 [dependencies]
 directories = "5.0.1"

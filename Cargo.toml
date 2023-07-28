@@ -9,4 +9,7 @@ repository = "https://github.com/arjunkomath/DropZone"
 keywords = ["cloud", "clipboard", "sync", "universal"]
 
 [dependencies]
+anyhow = "1.0.72"
+clap = { version = "4.3.19", features = ["derive"] }
+config = "0.13.3"
 directories = "5.0.1"

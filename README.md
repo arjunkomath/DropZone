@@ -8,8 +8,8 @@ I built DropZone to tackle the hassle of sharing text and clipboard data across 
 ### Key Features:
 
 - Share text and clipboard data across multiple machines effortlessly.
-- Compatible with various operating systems.
-- All data expires in 5 minutes (can be configured)
+- Compatible with most operating systems.
+- Configure data expiry (default is 5 minutes).
 - Btw, its written in Rust.
 
 ## Getting Started:

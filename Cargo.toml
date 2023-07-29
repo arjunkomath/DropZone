@@ -1,6 +1,6 @@
 [package]
 name = "dropzone"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 description = "Simple cloud clipboard"
 authors = ["Arjun Komath <arjunkomath@gmail.com>"]
@@ -11,6 +11,7 @@ keywords = ["cloud", "clipboard", "sync", "universal"]
 [dependencies]
 anyhow = "1.0.72"
 clap = { version = "4.3.19", features = ["derive"] }
+clipboard = "0.5.0"
 config = "0.13.3"
 directories = "5.0.1"
 inquire = "0.6.2"

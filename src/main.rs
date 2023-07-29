@@ -1,5 +1,7 @@
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
+use clipboard::ClipboardContext;
+use clipboard::ClipboardProvider;
 use inquire::Password;
 
 use crate::store::Store;
@@ -42,6 +44,15 @@ enum Commands {
         #[clap(required = true, help = "Key")]
         key: String,
     },
+
+    #[command()]
+    Yank {
+        #[clap(required = true, help = "Key")]
+        key: String,
+    },
+
+    #[command()]
+    Reset {},
 }
 
 fn main() -> Result<()> {
@@ -79,6 +90,22 @@ fn main() -> Result<()> {
             let value = store.get(&key).context("Failed to get value")?;
 
             println!("{}", value);
+        }
+
+        Commands::Yank { key } => {
+            let store = Store::new()?;
+
+            let mut ctx: ClipboardContext =
+                ClipboardProvider::new().expect("Failed to access clipboard");
+            let value = ctx
+                .get_contents()
+                .expect("Failed to get clipboard contents");
+
+            store.set(&key, value)?;
+        }
+
+        Commands::Reset {} => {
+            settings::reset()?;
         }
     }
 

@@ -34,7 +34,7 @@ pub fn fetch() -> Result<Config> {
     let settings_file_path = get_file_path()?;
 
     let settings = Config::builder()
-        .set_default("expiry", 3600)?
+        .set_default("expiry", 300)? // 5 minutes
         .add_source(config::File::new(
             settings_file_path.as_str(),
             config::FileFormat::Toml,
@@ -60,6 +60,13 @@ pub fn upsert(key: &str, value: String) -> Result<()> {
     };
 
     fs::write(get_file_path()?, updated_settings)?;
+
+    Ok(())
+}
+
+pub fn reset() -> Result<()> {
+    let settings_file_path = get_file_path()?;
+    fs::remove_file(settings_file_path)?;
 
     Ok(())
 }

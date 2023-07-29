@@ -11,7 +11,11 @@ pub struct Store {
 impl Store {
     pub fn new() -> Result<Self> {
         let settings = settings::fetch()?;
-        let redis_connection_string = settings.get_string("redis_connection_string")?;
+
+        let redis_connection_string = settings
+            .get_string("redis_connection_string")
+            .context("Redis connection string not set, please run `dropzone init`")?;
+
         let redis_client = redis::Client::open(redis_connection_string)
             .context("Failed to setup Redis connection")?;
 

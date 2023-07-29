@@ -1,2 +1,3 @@
 # DropZone
-Simple cloud clipboard
+
+A simple cloud clipboard

@@ -11,8 +11,8 @@ mod store;
 
 #[derive(Debug, Parser)]
 #[command(name = "dropzone")]
-#[command(bin_name = "dropzone")]
-#[command(about = "Simple cloud clipboard", long_about = None)]
+#[command(bin_name = "dz")]
+#[command(about = "A simple cloud clipboard", long_about = None)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -20,10 +20,10 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-    #[command()]
+    #[command(about = "Initialize dropzone with a redis connection string")]
     Init {},
 
-    #[command()]
+    #[command(about = "Set a configuration value")]
     Config {
         #[clap(required = true, help = "Key")]
         key: String,
@@ -31,7 +31,7 @@ enum Commands {
         value: String,
     },
 
-    #[command()]
+    #[command(about = "Set a value, overwriting if it already exists")]
     Set {
         #[clap(required = true, help = "Key")]
         key: String,
@@ -39,19 +39,19 @@ enum Commands {
         value: String,
     },
 
-    #[command()]
+    #[command(about = "Get a value")]
     Get {
         #[clap(required = true, help = "Key")]
         key: String,
     },
 
-    #[command()]
+    #[command(about = "Yank clipboard contents")]
     Yank {
         #[clap(required = true, help = "Key")]
         key: String,
     },
 
-    #[command()]
+    #[command(about = "Reset and clear settings")]
     Reset {},
 }
 

@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
 use inquire::Password;
 
@@ -76,7 +76,7 @@ fn main() -> Result<()> {
 
         Commands::Get { key } => {
             let store = Store::new()?;
-            let value = store.get(&key)?;
+            let value = store.get(&key).context("Failed to get value")?;
 
             println!("{}", value);
         }

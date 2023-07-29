@@ -1,4 +1,4 @@
-# DropZone: Your Seamless Cloud Clipboard
+# DropZone: Simple Cloud Clipboard
 
 DropZone is a user-friendly CLI tool designed to facilitate seamless data sharing across multiple devices. Whether it's simple text or clipboard content, this lightweight cloud clipboard has got you covered, regardless of your operating system.
 

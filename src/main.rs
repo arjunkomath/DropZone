@@ -89,7 +89,16 @@ fn main() -> Result<()> {
             let store = Store::new()?;
             let value = store.get(&key).context("Failed to get value")?;
 
-            println!("{}", value);
+            let mut ctx: ClipboardContext =
+                ClipboardProvider::new().expect("Failed to access clipboard");
+
+            if settings::fetch()?.get_bool("get_to_clipboard")? {
+                ctx.set_contents(value.clone())
+                    .expect("Failed to set clipboard contents");
+                println!("value copied to clipboard");
+            } else {
+                println!("{}", value);
+            }
         }
 
         Commands::Yank { key } => {

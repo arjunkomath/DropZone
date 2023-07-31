@@ -35,6 +35,7 @@ pub fn fetch() -> Result<Config> {
 
     let settings = Config::builder()
         .set_default("expiry", 300)? // 5 minutes
+        .set_default("get_to_clipboard", false)? // Get will set the value in clipboard
         .add_source(config::File::new(
             settings_file_path.as_str(),
             config::FileFormat::Toml,
@@ -45,6 +46,10 @@ pub fn fetch() -> Result<Config> {
 }
 
 pub fn upsert(key: &str, value: String) -> Result<()> {
+    if key != "expiry" && key != "get_to_clipboard" {
+        return Err(anyhow::anyhow!("Invalid key"));
+    }
+
     let settings_file = fs::read_to_string(get_file_path()?)?;
     let mut settings_file: toml::Value = settings_file.parse()?;
 

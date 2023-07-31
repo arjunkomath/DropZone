@@ -51,8 +51,14 @@ dz init
 1. Run `dz set some_key your_text_content`
 2. You can now get this value in any device using `dz get some_key`
 
-### Configure expiry
+### Configuration
 
+Set a custom expiry time for your data (in seconds):
 ```
 dz config expiry 60
+```
+
+Getting a key will automatically add it to your clipboard (true/false):
+```
+dz config get_to_clipboard true
 ```

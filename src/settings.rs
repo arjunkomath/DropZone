@@ -1,6 +1,6 @@
 use std::{fs, path::Path};
 
-use anyhow::{Context, Ok, Result};
+use anyhow::{bail, Context, Ok, Result};
 use config::Config;
 use directories::ProjectDirs;
 
@@ -47,7 +47,7 @@ pub fn fetch() -> Result<Config> {
 
 pub fn upsert(key: &str, value: String) -> Result<()> {
     if key != "expiry" && key != "get_to_clipboard" {
-        return Err(anyhow::anyhow!("Invalid key"));
+        bail!("Invalid key");
     }
 
     let settings_file = fs::read_to_string(get_file_path()?)?;

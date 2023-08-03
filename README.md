@@ -1,5 +1,8 @@
 # DropZone: Simple Cloud Clipboard
 
+[![crates.io](https://img.shields.io/crates/v/dropzone)](https://crates.io/crates/dropzone)
+[![Crates.io](https://img.shields.io/crates/d/dropzone)](https://crates.io/crates/dropzone)
+
 DropZone is a user-friendly CLI tool designed to facilitate seamless data sharing across multiple devices. Whether it's simple text or clipboard content, this lightweight cloud clipboard has got you covered, regardless of your operating system.
 
 ### Why DropZone?
